@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>gradient-feedback-mm</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="jsPsych/jspsych.js" charset="utf-8"></script>
+    <script src="plugins/jspsych-instructions-mm.js" charset="utf-8"></script>
+    <script src="plugins/jspsych-gradient-feedback-mm.js" charset="utf-8"></script>
+    <script src="js/utils.js" charset="utf-8"></script>
+    <link href="jsPsych/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+    <link href="css/plugins-mm.css" rel="stylesheet" type="text/css"></link>
+</head>
+
+<body>
+    <script>
+        /* create timeline */
+        var timeline = [];
+
+        var fbtest = {
+            type: "gradient-feedback-mm",
+            value: 60,
+            left_label: "<img src='pics/anxious.png' style='height:80px'></img>",
+            right_label: "<img src='pics/grinning.png' style='height:80px'></img>",
+            title: "Randomness"
+        }
+
+        timeline.push(fbtest);
+
+        /* start the experiment */
+
+        jsPsych.init({
+            exclusions: {
+                audio: true
+            },
+            timeline: timeline,
+            on_finish: function () {
+                //jsPsych.data.displayData("csv");
+                var resultCsv = jsPsych.data.get().csv();
+                var iadata = jsPsych.data.getInteractionData().csv();
+            },
+            on_interaction_data_update: function (data) {
+                console.log(JSON.stringify(data))
+                if(data.event=="blur"){
+                    jsPsych.pauseExperiment();
+                } else if(data.event=="focus"){
+                    jsPsych.resumeExperiment();
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>
