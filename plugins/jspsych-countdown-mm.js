@@ -37,7 +37,7 @@ jsPsych.plugins['countdown-mm'] = (function () {
             duration: {
                 type: jsPsych.plugins.parameterType.int,
                 pretty_name: 'Duration',
-                default: '1000', // = 1 second
+                default: '1000', 
                 description: 'Duration of each number of the countdown in milliseconds.'
             }
         }

@@ -13,7 +13,7 @@ jsPsych.plugins['gradient-feedback-multi-mm'] = (function () {
 
     plugin.info = {
         name: 'gradient-feedback-multi-mm',
-        description: '',
+        description: 'Present multiple feedback (values) in form of colored gradients.',
         parameters: {
             titles: {
                 type: jsPsych.plugins.parameterType.OBJECT,
