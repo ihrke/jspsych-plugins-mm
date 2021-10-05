@@ -5,7 +5,7 @@
     <title>gradient-feedback-mm</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="jsPsych/jspsych.js" charset="utf-8"></script>
-    <script src="plugins/jspsych-gradient-feedback-mm.js" charset="utf-8"></script>
+    <script src="plugins/jspsych-countdown-mm.js" charset="utf-8"></script>
     <script src="js/utils.js" charset="utf-8"></script>
     <link href="jsPsych/css/jspsych.css" rel="stylesheet" type="text/css"></link>
     <link href="css/plugins-mm.css" rel="stylesheet" type="text/css"></link>
@@ -16,15 +16,15 @@
         /* create timeline */
         var timeline = [];
 
-        var fbtest = {
-            type: "gradient-feedback-mm",
-            value: 60,
-            left_label: "<img src='pics/anxious.png' style='height:80px'></img>",
-            right_label: "<img src='pics/grinning.png' style='height:80px'></img>",
-            title: "Randomness"
+        var countdown={
+            type: "countdown-mm",
+            prompt: "Get ready for the task!",
+            duration: 1000,
+            countdown: 3
         }
+        
 
-        timeline.push(fbtest);
+        timeline.push(countdown);
 
         /* start the experiment */
 
