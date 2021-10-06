@@ -1,4 +1,12 @@
-# jsPsych plugins
+
+# Matthias' jsPsych plugins
+
+Homepage: https://ihrke.github.io/jspsych-plugins-mm/
+
+Github: https://github.com/ihrke/jspsych-plugins-mm
+
+Matthias: https://ihrke.github.io/
+
 
     
 ## countdown-mm

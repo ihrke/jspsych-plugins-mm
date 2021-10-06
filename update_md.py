@@ -4,9 +4,20 @@ import glob
 
 outfile="README.md"
 
+intro="""
+# Matthias' jsPsych plugins
+
+Homepage: https://ihrke.github.io/jspsych-plugins-mm/
+
+Github: https://github.com/ihrke/jspsych-plugins-mm
+
+Matthias: https://ihrke.github.io/
+
+"""
+
 fnames=glob.glob("plugins/*.js")
 
-output="# jsPsych plugins\n"
+output=intro
 for fname in fnames:
     print(fname)
     data=open(fname).read()
