@@ -18,6 +18,8 @@ Matthias: <https://ihrke.github.io/>
 fnames=glob.glob("plugins/*.js")
 
 output=intro
+
+all_info=[]
 for fname in fnames:
     print(fname)
     data=open(fname).read()
@@ -77,7 +79,17 @@ for fname in fnames:
 
 {partable}
 """.format(**info)
-    output+=out
+    info["output"]=out
+    all_info.append(info)
+
+
+toctable={"name": ["[{name}](#{link})".format(name=l["name"],link=l["name"]) for l in all_info],
+          "description": [l["description"] for l in all_info]}
+
+output+=pd.DataFrame(toctable).to_markdown(index=False)
+
+for info in all_info:
+    output+=info["output"]
 
 
 

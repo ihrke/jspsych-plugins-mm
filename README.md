@@ -7,7 +7,12 @@ Github: <https://github.com/ihrke/jspsych-plugins-mm>
 
 Matthias: <https://ihrke.github.io/>
 
-
+| name                                                      | description                                                       |
+|:----------------------------------------------------------|:------------------------------------------------------------------|
+| [countdown-mm](#countdown-mm)                             | Display countdown in center of screen and finish once it is done. |
+| [gradient-feedback-mm](#gradient-feedback-mm)             | Present a feedback (value) in form of a colored gradient.         |
+| [2afc-probreward-mm](#2afc-probreward-mm)                 | Present 2-AFC and give probabilistic reward afterwards.           |
+| [gradient-feedback-multi-mm](#gradient-feedback-multi-mm) | Present multiple feedback (values) in form of colored gradients.  |
     
 ## countdown-mm
 <img src='screenshots/example-countdown-mm.png' width="200px">
