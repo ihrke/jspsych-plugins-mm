@@ -37,6 +37,7 @@
                 //jsPsych.data.displayData("csv");
                 var resultCsv = jsPsych.data.get().csv();
                 var iadata = jsPsych.data.getInteractionData().csv();
+                jsPsych.data.displayData();
             },
             on_interaction_data_update: function (data) {
                 console.log(JSON.stringify(data))

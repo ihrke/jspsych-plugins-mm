@@ -2,10 +2,10 @@
 <html>
 
 <head>
-    <title>gradient-feedback-multi-mm</title>
+    <title>gradient-feedback-mm</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script src="jsPsych/jspsych.js" charset="utf-8"></script>
-    <script src="plugins/jspsych-gradient-feedback-multi-mm.js" charset="utf-8"></script>
+    <script src="plugins/jspsych-2afc-probreward-mm.js" charset="utf-8"></script>
     <script src="js/utils.js" charset="utf-8"></script>
     <link href="jsPsych/css/jspsych.css" rel="stylesheet" type="text/css"></link>
     <link href="css/plugins-mm.css" rel="stylesheet" type="text/css"></link>
@@ -16,18 +16,26 @@
         /* create timeline */
         var timeline = [];
 
-
-        var fbtest = {
-            type: "gradient-feedback-multi-mm",
-            values: [77, 56, 65],
-            end_colors: ["green", "blue", "red"],
-            left_labels: ["","","<img src='pics/anxious.png' style='height:80px'></img>"],
-            right_labels: ["","","<img src='pics/grinning.png' style='height:80px'></img>"],
-            titles: ["Randomness", "Metronome", "<font size='+3'>Total</font>"],
-            opacities: [0.4, 0.4, 1]
+        var stim={
+            type: "2afc-probreward-mm",
+            stimuli: {
+                left: "<img src='pics/1.png' height='400px'>",
+                right:"<img src='pics/2.png' height='400px'>"
+            },
+            responses: {
+                left: "f", 
+                right:"j"
+            },
+            feedback_stimuli: {
+                positive: "<img src='pics/grinning.png' height='400px'>",
+                negative: "<img src='pics/frowning.png' height='400px'>",
+                neutral: "<img src='pics/knockedout.png' height='400px'>"
+            }
         }
-
-        timeline.push(fbtest);
+        
+        timeline.push(stim);
+        timeline.push(stim);
+        timeline.push(stim);
 
         /* start the experiment */
 

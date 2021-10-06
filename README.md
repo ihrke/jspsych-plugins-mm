@@ -1,11 +1,11 @@
 
 # Matthias' jsPsych plugins
 
-Homepage: https://ihrke.github.io/jspsych-plugins-mm/
+Homepage: <https://ihrke.github.io/jspsych-plugins-mm/>
 
-Github: https://github.com/ihrke/jspsych-plugins-mm
+Github: <https://github.com/ihrke/jspsych-plugins-mm>
 
-Matthias: https://ihrke.github.io/
+Matthias: <https://ihrke.github.io/>
 
 
     
@@ -42,6 +42,32 @@ Present a feedback (value) in form of a colored gradient.
 | width        | jsPsych.plugins.parameterType.INT    | Width of feedback box  | 700       | Width of feedback box in pixels.                                   |
 | height       | jsPsych.plugins.parameterType.STRING | Height of feedback box | 80px      | Height of feedback box in CSS style (e.g., 500px or 20%).          |
 | button_label | jsPsych.plugins.parameterType.STRING | Button label           | Continue  | The text that appears on the button to continue to the next trial. |
+
+    
+## 2afc-probreward-mm
+<img src='screenshots/example-2afc-probreward-mm.png' width="200px">
+
+Present 2-AFC and give probabilistic reward afterwards.
+
+[Demo](example-2afc-probreward-mm.html)
+
+|                      | type                                 | pretty_name                      | default                                              | description                                                                                              |
+|:---------------------|:-------------------------------------|:---------------------------------|:-----------------------------------------------------|:---------------------------------------------------------------------------------------------------------|
+| title                | jsPsych.plugins.parameterType.STRING | label/title                      |                                                      | A title/label put over the stimuli.                                                                      |
+| stimuli              | jsPsych.plugins.parameterType.OBJECT | list of 2 stimuli                | {left: "A", right: "B                                | nan                                                                                                      |
+| fixcross_duration    | jsPsych.plugins.parameterType.Object | duration of fixation cross       | [200, 500, 800]                                      | Duration the fixation cross (in ms); in case a list is provided, one of the elements is chosen randomly. |
+| fixation_cross       | jsPsych.plugins.parameterType.STRING | fixation cross                   | <div style='font-size:100px; color:black;'>+</div>   | Stimulus presented as fixation cross (HTML).                                                             |
+| feedback_stimuli     | jsPsych.plugins.parameterType.OBJECT | list of 3 stimuli                | {positive: "good", negative: "bad", neutral: "missed | nan                                                                                                      |
+| preward              | jsPsych.plugins.parameterType.OBJECT | probability of reward            | {left:0.7, right:0.3                                 | nan                                                                                                      |
+| responses            | jsPsych.plugins.parameterType.OBJECT | list of 2 response buttons       | {left: "f", right: "j                                | nan                                                                                                      |
+| width                | jsPsych.plugins.parameterType.STRING | width of each stimulus           | 100px                                                | in HTML-compatible units (px, %).                                                                        |
+| distance             | jsPsych.plugins.parameterType.STRING | distance between stimuli         | 600px                                                | in HTML-compatible units (px, %).                                                                        |
+| height               | jsPsych.plugins.parameterType.STRING | Height of stimuli                | 100px                                                | Height of stimuli box in CSS style (e.g., 500px or 20%).                                                 |
+| highlight_duration   | jsPsych.plugins.parameterType.INT    | duration highlighted stimulus    | 200                                                  | Duration the selected stimulus is highlighted (in ms).                                                   |
+| feedback_duration    | jsPsych.plugins.parameterType.INT    | duration feedback                | 200                                                  | Duration the feedback/reward is presented (in ms).                                                       |
+| max_decision_time    | jsPsych.plugins.parameterType.INT    | max time for decision            | 1700                                                 | Maximum time for making decision (in ms).                                                                |
+| total_trial_duration | jsPsych.plugins.parameterType.INT    | Total duration of trial          | 3300                                                 | Total trial duration (fixcross, decision, highlight, feedback, rest) in ms.                              |
+| border_style         | jsPsych.plugins.parameterType.STRING | Style of border for highlighting | 2px solid black                                      | given as CSS border-style "thickness style color".                                                       |
 
     
 ## gradient-feedback-multi-mm

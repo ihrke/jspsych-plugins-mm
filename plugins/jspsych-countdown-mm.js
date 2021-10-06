@@ -87,7 +87,7 @@ jsPsych.plugins['countdown-mm'] = (function () {
                 // move on to the next trial
                 jsPsych.finishTrial(trial_data);
 
-            } else {
+            } else { 
                 setTimeout(countdown_function, trial.duration);
             }
         }
