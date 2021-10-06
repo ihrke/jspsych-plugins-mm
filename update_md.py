@@ -7,11 +7,11 @@ outfile="README.md"
 intro="""
 # Matthias' jsPsych plugins
 
-Homepage: https://ihrke.github.io/jspsych-plugins-mm/
+Homepage: <https://ihrke.github.io/jspsych-plugins-mm/>
 
-Github: https://github.com/ihrke/jspsych-plugins-mm
+Github: <https://github.com/ihrke/jspsych-plugins-mm>
 
-Matthias: https://ihrke.github.io/
+Matthias: <https://ihrke.github.io/>
 
 """
 
