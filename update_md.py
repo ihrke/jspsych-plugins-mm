@@ -54,11 +54,11 @@ for fname in fnames:
     partable=pd.DataFrame(pars).transpose().to_markdown()
     info["partable"]=partable
     info["screenshotlink"]="screenshots/example-{name}.png".format(**info)
-    info["demolink"]="example-{name}.png".format(**info)
+    info["demolink"]="example-{name}.html".format(**info)
     out="""
     
 ## {name}
-<img src='{screenshotlink}' width="200px"></img> 
+<img src='{screenshotlink}' width="200px">
 
 {description}
 
