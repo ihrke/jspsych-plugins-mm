@@ -13,6 +13,9 @@ Github: <https://github.com/ihrke/jspsych-plugins-mm>
 
 Matthias: <https://ihrke.github.io/>
 
+
+**List of plugins**
+
 """
 
 fnames=glob.glob("plugins/*.js")
@@ -84,6 +87,7 @@ for fname in fnames:
 
 
 toctable={"name": ["[{name}](#{link})".format(name=l["name"],link=l["name"]) for l in all_info],
+          "demo": ["[link]({dl})".format(dl=l["demolink"]) for l in all_info],
           "description": [l["description"] for l in all_info]}
 
 output+=pd.DataFrame(toctable).to_markdown(index=False)
