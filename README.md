@@ -2,7 +2,11 @@
 
     
 ## countdown-mm
+<img src='screenshots/example-countdown-mm.png' width="200px"></img> 
+
 Display countdown in center of screen and finish once it is done.
+
+[Demo](example-countdown-mm.png)
 
 |                 | type                                 | pretty_name     | default   | description                                                             | options            |
 |:----------------|:-------------------------------------|:----------------|:----------|:------------------------------------------------------------------------|:-------------------|
@@ -13,7 +17,11 @@ Display countdown in center of screen and finish once it is done.
 
     
 ## gradient-feedback-mm
+<img src='screenshots/example-gradient-feedback-mm.png' width="200px"></img> 
+
 Present a feedback (value) in form of a colored gradient.
+
+[Demo](example-gradient-feedback-mm.png)
 
 |              | type                                 | pretty_name            | default   | description                                                        |
 |:-------------|:-------------------------------------|:-----------------------|:----------|:-------------------------------------------------------------------|
@@ -29,7 +37,11 @@ Present a feedback (value) in form of a colored gradient.
 
     
 ## gradient-feedback-multi-mm
+<img src='screenshots/example-gradient-feedback-multi-mm.png' width="200px"></img> 
+
 Present multiple feedback (values) in form of colored gradients.
+
+[Demo](example-gradient-feedback-multi-mm.png)
 
 |              | type                                 | pretty_name                                             | default   | description                                                           |
 |:-------------|:-------------------------------------|:--------------------------------------------------------|:----------|:----------------------------------------------------------------------|

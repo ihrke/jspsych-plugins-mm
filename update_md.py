@@ -11,10 +11,8 @@ for fname in fnames:
     print(fname)
     data=open(fname).read()
 
-
     six=data.find("plugin.info")
     while data[six]!="{": six+=1
-
 
     pc=0
     for i in range(six,len(data)):
@@ -55,14 +53,21 @@ for fname in fnames:
 
     partable=pd.DataFrame(pars).transpose().to_markdown()
     info["partable"]=partable
+    info["screenshotlink"]="screenshots/example-{name}.png".format(**info)
+    info["demolink"]="example-{name}.png".format(**info)
     out="""
     
 ## {name}
+<img src='{screenshotlink}' width="200px"></img> 
+
 {description}
+
+[Demo]({demolink})
 
 {partable}
 """.format(**info)
     output+=out
+
 
 
 with open(outfile, "w") as f:
