@@ -13,6 +13,7 @@ Matthias: <https://ihrke.github.io/>
 | name                                                      | demo                                            | description                                                       |
 |:----------------------------------------------------------|:------------------------------------------------|:------------------------------------------------------------------|
 | [countdown-mm](#countdown-mm)                             | [link](example-countdown-mm.html)               | Display countdown in center of screen and finish once it is done. |
+| [quiz-multi-choice-mm](#quiz-multi-choice-mm)             | [link](example-quiz-multi-choice-mm.html)       | Multiple-choice quiz. Only continue when answer is correct        |
 | [gradient-feedback-mm](#gradient-feedback-mm)             | [link](example-gradient-feedback-mm.html)       | Present a feedback (value) in form of a colored gradient.         |
 | [2afc-probreward-mm](#2afc-probreward-mm)                 | [link](example-2afc-probreward-mm.html)         | Present 2-AFC and give probabilistic reward afterwards.           |
 | [gradient-feedback-multi-mm](#gradient-feedback-multi-mm) | [link](example-gradient-feedback-multi-mm.html) | Present multiple feedback (values) in form of colored gradients.  |
@@ -30,6 +31,25 @@ Display countdown in center of screen and finish once it is done.
 | prompt          | jsPsych.plugins.parameterType.STRING | Prompt          | null      | Text to display along with the countdown.                               | nan                |
 | prompt_location | jsPsych.plugins.parameterType.SELECT | Prompt location | above     | Indicates whether to show prompt "above" or "below" the countdown area. | ['above', 'below'] |
 | duration        | jsPsych.plugins.parameterType.int    | Duration        | 1000      | Duration of each number of the countdown in milliseconds.               | nan                |
+
+    
+## quiz-multi-choice-mm
+<img src='screenshots/example-quiz-multi-choice-mm.png' width="200px">
+
+Multiple-choice quiz. Only continue when answer is correct
+
+[Demo](example-quiz-multi-choice-mm.html)
+
+|              | type                                 | array   | pretty_name      | nested   | prompt   | default   | description                                                                      |
+|:-------------|:-------------------------------------|:--------|:-----------------|:---------|:---------|:----------|:---------------------------------------------------------------------------------|
+| question     | jsPsych.plugins.parameterType.STRING | false   | Prompt           | {        | {        | undefined | The strings that will be associated with a group of options.                     |
+| options      | jsPsych.plugins.parameterType.STRING | true    | Options          | nan      | nan      | undefined | Displays options for an individual question.                                     |
+| horizontal   | jsPsych.plugins.parameterType.BOOL   | nan     | Horizontal       | nan      | nan      | false     | If true, then questions are centered and options are displayed horizontally.     |
+| name         | jsPsych.plugins.parameterType.STRING | nan     | Question Name    | nan      | nan      |           | Controls the name of data values associated with this question                   |
+| correct      | jsPsych.plugins.parameterType.STRING | nan     | Correct response | nan      | nan      |           | Indicates which response option is correct                                       |
+| hint         | jsPsych.plugins.parameterType.STRING | nan     | Hint             | nan      | nan      |           | Hint that is displayed when an incorrect response is given                       |
+| preamble     | jsPsych.plugins.parameterType.STRING | nan     | Preamble         | nan      | nan      | null      | HTML formatted string to display at the top of the page above all the questions. |
+| button_label | jsPsych.plugins.parameterType.STRING | nan     | Button label     | nan      | nan      | Continue  | Label of the button.                                                             |
 
     
 ## gradient-feedback-mm

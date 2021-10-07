@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>gradient-feedback-mm</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="jsPsych/jspsych.js" charset="utf-8"></script>
+    <script src="plugins/jspsych-quiz-multi-choice-mm.js" charset="utf-8"></script>
+    <script src="js/utils.js" charset="utf-8"></script>
+    <link href="jsPsych/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+    <link href="css/plugins-mm.css" rel="stylesheet" type="text/css"></link>
+</head>
+
+<body>
+    <script>
+        /* create timeline */
+        var timeline = [];
+
+
+        var quiz_multi_choice = {
+            type: 'quiz-multi-choice-mm',
+            preamble: "<b>Quiz</b>",
+            question: {
+                    prompt: jsPsych.timelineVariable('prompt'),
+                    name: jsPsych.timelineVariable('name'),
+                    options: jsPsych.timelineVariable('options'),
+                    correct: jsPsych.timelineVariable('correct'),
+                    hint: jsPsych.timelineVariable('hint'),
+                    horizontal: true,
+                    required:true
+            },
+        };
+
+        var quiz_design=[
+            {
+                name:"quiz1",
+                prompt:"When you press buttons, do you always have to press the left button after having\
+                    pressed the right button?",
+                correct:"No",
+                hint:"Wrong answer. The sequence of left-right clicks should be as <b>random</b>\
+                    as possible. That means, there should be an equal probability to press\
+                    left or right for any beep.",
+                options: ["Yes","No","Don't know"]
+            },
+            {
+                name:"quiz2",
+                prompt:"If you have pressed the left button three times in a row, does \
+                    the next one <b>have to be</b> the right button?",
+                correct:"No",
+                hint:"Wrong answer. The sequence of left-right clicks should be as <b>random</b>\
+                    as possible. That means, there should be an equal probability to press\
+                    left or right for any beep and hence even longer sequences of the same\
+                    button press are possible (but unlikely).",
+                options: ["Yes","No","Don't know"]
+            },
+            {
+                name:"quiz3",
+                prompt:"If you thought about a film you have seen while doing the task,\
+                which response should you give to the questions about your thoughts?",
+                correct:"Non task-related (OFF-TASK)",
+                hint:"Wrong answer. Thinking of a film has nothing to do with the experimental task.",
+                options: ["Task-related (ON-TASK)","Non task-related (OFF-TASK)","Don't know"]
+            },
+            {
+                name:"quiz4",
+                prompt:"If you, during the task, thought about what you will have for dinner tomorrow,\
+                      these thoughts would be in the category:",
+                correct:"Non task-related (OFF-TASK)",
+                hint:"Wrong answer. Thinking about dinner has nothing to do with the experimental task.",
+                options: ["Task-related (ON-TASK)","Non task-related (OFF-TASK)","Don't know"]
+            },
+            {
+                name:"quiz5",
+                prompt:"If you, during the task, counted numbers of left and right taps in your head,\
+                        these thoughts would be in the category:",
+                correct:"Task-related (ON-TASK)",
+                hint:"Wrong answer. Thinking about which key to press is essential in order to produce a random sequence.",
+                options: ["Task-related (ON-TASK)","Non task-related (OFF-TASK)","Don't know"]
+            },
+            {
+                name:"quiz6",
+                prompt:"The beep I hear dictates when I should push a button:",
+                correct:"Yes",
+                hint:"Wrong answer. You should press the button together with the beeps.",
+                options: ["Yes","No","I don’t know"]
+            }
+        ]
+        var quiz_block = {
+            timeline: [quiz_multi_choice],
+            timeline_variables: quiz_design
+        }
+        timeline.push(quiz_block);        
+
+        /* start the experiment */
+
+        jsPsych.init({
+            exclusions: {
+                audio: true
+            },
+            timeline: timeline,
+            on_finish: function () {
+                //jsPsych.data.displayData("csv");
+                var resultCsv = jsPsych.data.get().csv();
+                var iadata = jsPsych.data.getInteractionData().csv();
+                jsPsych.data.displayData();
+            },
+            on_interaction_data_update: function (data) {
+                console.log(JSON.stringify(data))
+                if(data.event=="blur"){
+                    jsPsych.pauseExperiment();
+                } else if(data.event=="focus"){
+                    jsPsych.resumeExperiment();
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>
