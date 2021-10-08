@@ -65,7 +65,7 @@ jsPsych.plugins['2afc-probreward-mm'] = (function () {
             distance: {
                 type: jsPsych.plugins.parameterType.STRING,
                 pretty_name: 'distance between stimuli',
-                default: "600px",
+                default: "300px",
                 description: 'in HTML-compatible units (px, %).'
             },
             height: {
@@ -110,7 +110,10 @@ jsPsych.plugins['2afc-probreward-mm'] = (function () {
 
     plugin.trial = function (display_element, trial) {
         var start_time = performance.now();
-        var trial_data={};
+        var trial_data={
+            preward_left: trial.preward.left,
+            preward_right:trial.preward.right
+        };
         var html = "";
         
         // placeholder so that size of stimulus does not change at highlighting
@@ -150,6 +153,7 @@ jsPsych.plugins['2afc-probreward-mm'] = (function () {
             display_element.querySelectorAll(".jspsych-2afc-probreward-stimulus").forEach( (box) => {
                 box.style["visibility"]="visible";
             })
+            trial_data["stim_onset"]=performance.now()-start_time
 
             // start the response listener to make the 2-AFC decision
             jsPsych.pluginAPI.getKeyboardResponse({
@@ -167,6 +171,7 @@ jsPsych.plugins['2afc-probreward-mm'] = (function () {
         if( Array.isArray(trial.fixcross_duration) ){
             fixdur = trial.fixcross_duration[Math.floor(Math.random()*trial.fixcross_duration.length)];
         }
+        trial_data["fixcross_duration"]=fixdur;
         setTimeout(after_fixcross, fixdur);
 
 
@@ -177,9 +182,7 @@ jsPsych.plugins['2afc-probreward-mm'] = (function () {
             jsPsych.pluginAPI.clearAllTimeouts();
 
             // kill keyboard listeners
-            if (typeof keyboardListener !== 'undefined') {
-                jsPsych.pluginAPI.cancelKeyboardResponse(keyboardListener);
-            }
+            jsPsych.pluginAPI.cancelAllKeyboardResponses();
 
             // gather the data to store for the trial
             trial_data["trial_duration"]=performance.now()-start_time;
@@ -204,6 +207,7 @@ jsPsych.plugins['2afc-probreward-mm'] = (function () {
 
         var show_feedback = function(reward){
             console.log(reward);
+            trial_data["feedback_onset"]=performance.now()-start_time;
             display_element.querySelectorAll(".jspsych-2afc-probreward-stimulus").forEach( (box) => {
                 box.style["visibility"]="hidden";
             })
@@ -217,6 +221,8 @@ jsPsych.plugins['2afc-probreward-mm'] = (function () {
         var after_response_or_timeout = function(info) {
             if( typeof info == "undefined" ){
                // timeout!
+               jsPsych.pluginAPI.cancelAllKeyboardResponses();
+
                feedback=trial.feedback_stimuli.neutral;
                trial_data["rt"]=NaN;
                trial_data["reward"]="neutral";

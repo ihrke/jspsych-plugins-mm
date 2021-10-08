@@ -13,7 +13,7 @@ jsPsych.plugins['gradient-feedback-multi-mm'] = (function () {
 
     plugin.info = {
         name: 'gradient-feedback-multi-mm',
-        description: 'Present multiple feedback (values) in form of colored gradients.',
+        description: '',
         parameters: {
             titles: {
                 type: jsPsych.plugins.parameterType.OBJECT,
@@ -210,8 +210,8 @@ jsPsych.plugins['gradient-feedback-multi-mm'] = (function () {
 
             // gather the data to store for the trial
             var trial_data = {
-                "fb_value": trial.value,
-                "fb_title": trial.title,
+                "fb_value": trial.values,
+                "fb_title": trial.titles,
                 "rt": performance.now()-start_time
             };
 
